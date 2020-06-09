@@ -5,4 +5,8 @@
     <color name="themeColor3">#5AB9EA</color>
     <color name="themeColor4">#C1C8E4</color>
     <color name="themeColor5">#8860D0</color>
+
+    <color name="login_form_details">#CCFFFFFF</color>
+    <color name="login_form_details_light">#1AFFFFFF</color>
+    <color name="login_form_details_medium">#66FFFFFF</color>
 </resources>

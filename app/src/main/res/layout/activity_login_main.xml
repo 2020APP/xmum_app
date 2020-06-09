@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="650px"
-        android:layout_height="325px"
+        android:layout_width="500px"
+        android:layout_height="250px"
         android:src="@drawable/xmum_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
@@ -39,10 +39,9 @@
         android:layout_marginTop="28dp"
         android:text="@string/ss_txt"
         android:fontFamily="cursive"
-        android:textSize="80px"
+        android:textSize="60px"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toBottomOf="@id/logo" />
 
@@ -51,6 +50,7 @@
         android:layout_width="550px"
         android:layout_height="150px"
         android:layout_marginBottom="30px"
+        android:background="@drawable/button_login"
         android:text="@string/student_login_button"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -61,6 +61,7 @@
         android:layout_width="550px"
         android:layout_height="150px"
         android:layout_marginBottom="150dp"
+        android:background="@drawable/button_login"
         android:text="@string/teacher_login_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
