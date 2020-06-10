@@ -13,4 +13,5 @@
     <string name="back_login">Back</string>
     <string name="sign_in_login">Sign in</string>
     <string name="sign_up_login">New user? Sign up now!</string>
+    <string name="create_acc">Create a new account</string>
 </resources>
