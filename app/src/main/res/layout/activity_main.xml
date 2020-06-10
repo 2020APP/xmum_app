@@ -24,6 +24,8 @@
 
     <ImageView
         android:id="@+id/logo"
+        android:contentDescription="@string/xmum_logo"
+        android:transitionName="xmum_logo_transition"
         android:layout_width="250dp"
         android:layout_height="125dp"
         android:src="@drawable/xmum_logo"
@@ -31,11 +33,11 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4"
-        android:contentDescription="@string/xmum_logo" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/slogan"
+        android:transitionName="xmum_slogan_transition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"

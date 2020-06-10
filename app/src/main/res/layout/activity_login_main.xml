@@ -12,14 +12,16 @@
 
     <ImageView
         android:id="@+id/logo"
+        android:contentDescription="@string/xmum_logo"
+        android:transitionName="xmum_logo_transition"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_marginBottom="10dp"
-        android:contentDescription="@string/xmum_logo"
         android:src="@drawable/xmum_logo" />
 
     <TextView
         android:id="@+id/slogan"
+        android:transitionName="xmum_slogan_transition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
@@ -30,7 +32,7 @@
 
     <Button
         android:id="@+id/login_student"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/button_login"
@@ -38,7 +40,7 @@
 
     <Button
         android:id="@+id/login_teacher"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:background="@drawable/button_login"
         android:text="@string/teacher_login_button" />
