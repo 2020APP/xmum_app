@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="themeColor1">#5680E9</color>
     <color name="themeColor2">#84CEEB</color>
     <color name="themeColor3">#5AB9EA</color>
@@ -9,4 +9,7 @@
     <color name="login_form_details">#CCFFFFFF</color>
     <color name="login_form_details_light">#1AFFFFFF</color>
     <color name="login_form_details_medium">#66FFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+
 </resources>

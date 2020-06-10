@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/splash_bg">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="24dp"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="24dp"/>
-
+    android:background="@drawable/splash_bg"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -28,27 +15,18 @@
         android:transitionName="xmum_logo_transition"
         android:layout_width="250dp"
         android:layout_height="125dp"
-        android:src="@drawable/xmum_logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/xmum_logo" />
 
     <TextView
         android:id="@+id/slogan"
-        android:transitionName="xmum_slogan_transition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/baloo"
         android:text="@string/ss_txt"
-        android:fontFamily="cursive"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/guideline_right"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@id/guideline_left"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:transitionName="xmum_slogan_transition" />
+</LinearLayout>

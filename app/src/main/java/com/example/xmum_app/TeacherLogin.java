@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class LoginMain extends AppCompatActivity {
+public class TeacherLogin extends AppCompatActivity {
 
-    Button callLogin_student, callLogin_teacher;
+    Button callSign_in, callSign_up, callForget_password, callBack;
     ImageView image;
     TextView text;
 
@@ -22,41 +22,49 @@ public class LoginMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login_main);
+        setContentView(R.layout.activity_teacher_login);
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
 
-        callLogin_student = findViewById(R.id.login_student);
-        callLogin_teacher = findViewById(R.id.login_teacher);
+        callSign_in = findViewById(R.id.sign_in);
+        callSign_up = findViewById(R.id.create_account);
+        callForget_password = findViewById(R.id.forget_password);
+        callBack = findViewById(R.id.back);
 
         image = findViewById(R.id.logo);
         text = findViewById(R.id.slogan);
 
-        callLogin_student.setOnClickListener(new View.OnClickListener() {
+        callSign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginMain.this, StudentLogin.class);
 
-                Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
-                pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
-
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginMain.this, pairs);
-
-                startActivity(intent, options.toBundle());
             }
         });
 
-        callLogin_teacher.setOnClickListener(new View.OnClickListener() {
+        callSign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginMain.this, TeacherLogin.class);
+
+            }
+        });
+
+        callForget_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        callBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeacherLogin.this, LoginMain.class);
 
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
                 pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
 
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginMain.this, pairs);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(TeacherLogin.this, pairs);
 
                 startActivity(intent, options.toBundle());
             }
