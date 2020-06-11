@@ -3,19 +3,24 @@
     <string name="ss_txt">Study hard, study smart.</string>
     <string name="xmum_logo">xmum_logo</string>
     <string name="signin_prompt">Please sign in to continue</string>
-    <string name="login_username">Username</string>
-    <string name="login_password">Password</string>
-    <string name="forget_password">Forget Password?</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forgot Password?</string>
     <string name="back_login">Back</string>
     <string name="sign_in_login">Sign in</string>
     <string name="sign_up_login">New user? Sign up now!</string>
     <string name="create_acc">Create a new account</string>
     <string name="have_acc">I already have an account</string>
     <string name="welcome">Welcome back,</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="staff_id_student_id">Staff ID/Student ID</string>
+    <string name="e_mail_or_id">E-mail/ID</string>
+    <string name="register_user">Register user</string>
+    <string name="arrowdown">arrowDown</string>
 
     <string-array name="role_array">
         <item>Student</item>
-        <item>Lecturer</item>
         <item>Staff</item>
     </string-array>
 </resources>

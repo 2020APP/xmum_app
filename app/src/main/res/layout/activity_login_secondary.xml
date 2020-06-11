@@ -63,11 +63,13 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
+                    android:popupBackground="@drawable/popup_list_bg"
                     android:gravity="center"
                     android:spinnerMode="dropdown" />
 
                 <ImageView
                     android:id="@+id/arrow_down"
+                    android:contentDescription="@string/arrowdown"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
@@ -92,14 +94,14 @@
             android:textSize="15sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username_text_input"
+            android:id="@+id/eoid_text_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login_username">
+            android:hint="@string/e_mail_or_id">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_edit_text"
+                android:id="@+id/eoid_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textbox_login"
@@ -112,7 +114,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login_password"
+            android:hint="@string/password"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true">
 

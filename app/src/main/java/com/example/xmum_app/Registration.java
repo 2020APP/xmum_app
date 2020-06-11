@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class LoginMain extends AppCompatActivity {
+public class Registration extends AppCompatActivity {
 
-    Button callLogin, callRegister;
+    Button callBack, callRegister;
     ImageView image;
     TextView text;
 
@@ -22,26 +22,26 @@ public class LoginMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login_main);
+        setContentView(R.layout.activity_registration);
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
 
-        callLogin = findViewById(R.id.login);
+        callBack = findViewById(R.id.back);
         callRegister = findViewById(R.id.register);
 
         image = findViewById(R.id.logo);
         text = findViewById(R.id.slogan);
 
-        callLogin.setOnClickListener(new View.OnClickListener() {
+        callBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginMain.this, LoginSecondary.class);
+                Intent intent = new Intent(Registration.this, LoginMain.class);
 
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
                 pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
 
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginMain.this, pairs);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Registration.this, pairs);
 
                 startActivity(intent, options.toBundle());
             }
@@ -50,15 +50,7 @@ public class LoginMain extends AppCompatActivity {
         callRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginMain.this, Registration.class);
 
-                Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
-                pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
-
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginMain.this, pairs);
-
-                startActivity(intent, options.toBundle());
             }
         });
     }
