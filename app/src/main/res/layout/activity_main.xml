@@ -16,7 +16,7 @@
         android:layout_width="250dp"
         android:layout_height="125dp"
         android:layout_marginBottom="10dp"
-        android:src="@drawable/xmum_logo" />
+        android:src="@mipmap/xmum_logo" />
 
     <TextView
         android:id="@+id/slogan"

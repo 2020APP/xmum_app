@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">xmum_app</string>
     <string name="ss_txt">Study hard, study smart.</string>
-    <string name="student_login_button">I am a student.</string>
-    <string name="teacher_login_button">I am a teacher.</string>
     <string name="xmum_logo">xmum_logo</string>
-    <string name="welcome_student">Welcome back, student.</string>
-    <string name="welcome_teacher">Welcome back, teacher.</string>
     <string name="signin_prompt">Please sign in to continue</string>
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
@@ -14,4 +10,12 @@
     <string name="sign_in_login">Sign in</string>
     <string name="sign_up_login">New user? Sign up now!</string>
     <string name="create_acc">Create a new account</string>
+    <string name="have_acc">I already have an account</string>
+    <string name="welcome">Welcome back,</string>
+
+    <string-array name="role_array">
+        <item>Student</item>
+        <item>Lecturer</item>
+        <item>Staff</item>
+    </string-array>
 </resources>
