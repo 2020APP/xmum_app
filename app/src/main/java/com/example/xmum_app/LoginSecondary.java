@@ -54,7 +54,15 @@ public class LoginSecondary extends AppCompatActivity implements AdapterView.OnI
         callSign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(LoginSecondary.this, Registration.class);
 
+                Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
+                pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginSecondary.this, pairs);
+
+                startActivity(intent, options.toBundle());
             }
         });
 
@@ -68,15 +76,13 @@ public class LoginSecondary extends AppCompatActivity implements AdapterView.OnI
         callBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginSecondary.this, LoginMain.class);
-
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
                 pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginSecondary.this, pairs);
 
-                startActivity(intent, options.toBundle());
+                finish();
             }
         });
     }

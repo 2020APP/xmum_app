@@ -35,15 +35,13 @@ public class Registration extends AppCompatActivity {
         callBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Registration.this, LoginMain.class);
-
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
                 pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Registration.this, pairs);
 
-                startActivity(intent, options.toBundle());
+                finish();
             }
         });
 
