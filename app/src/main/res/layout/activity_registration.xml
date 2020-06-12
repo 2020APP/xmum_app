@@ -38,30 +38,14 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fn_text_input"
+            android:id="@+id/name_text_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/first_name">
+            android:hint="@string/name">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fn_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/textbox_login"
-                android:inputType="text"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ln_text_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/last_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ln_edit_text"
+                android:id="@+id/name_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textbox_login"
@@ -78,6 +62,22 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/id_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbox_login"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_number_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textbox_login"

@@ -25,7 +25,6 @@ public class LoginSecondary extends AppCompatActivity implements AdapterView.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login_secondary);
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);
@@ -69,7 +68,8 @@ public class LoginSecondary extends AppCompatActivity implements AdapterView.OnI
         callForget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(LoginSecondary.this, recoverPassword.class);
+                startActivity(intent);
             }
         });
 
