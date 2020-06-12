@@ -149,4 +149,15 @@
 
     </LinearLayout>
 
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:id="@+id/sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:padding="0dp"
+        android:fontFamily="@font/baloo"
+        android:textSize="12sp"
+        android:text="@string/login_registration"
+        app:backgroundTint="@color/transparent" />
+
 </LinearLayout>

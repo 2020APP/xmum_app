@@ -23,6 +23,7 @@
     <string name="confirm">Confirm</string>
     <string name="pw_reset_instruction">Key in your e-mail address. An e-mail will be sent to your mailbox for confirmation.</string>
     <string name="pw_recovery">Password Recovery</string>
+    <string name="login_registration">Already have an account? Login</string>
 
     <string-array name="role_array">
         <item>Student</item>
