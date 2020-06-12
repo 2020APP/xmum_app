@@ -7,14 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Registration extends AppCompatActivity {
 
-    Button callBack, callRegister;
+    Button callBack, callRegister, callLogin;
     ImageView image;
     TextView text;
 
@@ -27,6 +26,7 @@ public class Registration extends AppCompatActivity {
 
         callBack = findViewById(R.id.back);
         callRegister = findViewById(R.id.register);
+        callLogin = findViewById(R.id.sign_in);
 
         image = findViewById(R.id.logo);
         text = findViewById(R.id.slogan);
@@ -34,12 +34,6 @@ public class Registration extends AppCompatActivity {
         callBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
-                pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
-
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Registration.this, pairs);
-
                 finish();
             }
         });
@@ -48,6 +42,21 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        callLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Registration.this, LoginSecondary.class);
+
+                Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
+                pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Registration.this, pairs);
+
+                startActivity(intent, options.toBundle());
             }
         });
     }

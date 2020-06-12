@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -76,12 +75,6 @@ public class LoginSecondary extends AppCompatActivity implements AdapterView.OnI
         callBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(image, "xmum_logo_transition");
-                pairs[1] = new Pair<View, String>(text, "xmum_slogan_transition");
-
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginSecondary.this, pairs);
-
                 finish();
             }
         });
