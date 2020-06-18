@@ -15,10 +15,12 @@ public class LoginSecondary extends AppCompatActivity {
     Button callSign_in, callSign_up, callForget_password, callBack;
     ImageView image;
     TextView text;
+    private SessionHandler session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        session = new SessionHandler(getApplicationContext());
         setContentView(R.layout.activity_login_secondary);
         getWindow().setEnterTransition(null);
         getWindow().setExitTransition(null);

@@ -72,11 +72,11 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
         callRegister = findViewById(R.id.register);
         callLogin = findViewById(R.id.sign_in);
 
-        etId = findViewById(R.id.id_text_input);
-        etFullName = findViewById(R.id.name_text_input);
-        etPhoneNumber = findViewById(R.id.phone_number_text_input);
-        etEmailAddress = findViewById(R.id.email_text_input);
-        etPassword = findViewById(R.id.password_text_input);
+        etId = findViewById(R.id.id_edit_text);
+        etFullName = findViewById(R.id.name_edit_text);
+        etPhoneNumber = findViewById(R.id.phone_number_edit_text);
+        etEmailAddress = findViewById(R.id.email_edit_text);
+        etPassword = findViewById(R.id.password_edit_text);
 
         image = findViewById(R.id.logo);
         text = findViewById(R.id.slogan);
