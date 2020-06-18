@@ -10,12 +10,11 @@
     <string name="sign_up_login">New user? Sign up now!</string>
     <string name="create_acc">Create a new account</string>
     <string name="have_acc">I already have an account</string>
-    <string name="welcome">Welcome back,</string>
+    <string name="welcome">Welcome back</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="e_mail">E-mail address</string>
-    <string name="staff_id_student_id">Staff ID/Student ID</string>
-    <string name="e_mail_or_id">E-mail address/ID</string>
+    <string name="id">Student/Staff ID</string>
     <string name="register_user">Register user</string>
     <string name="arrowdown">arrowDown</string>
     <string name="name">Name</string>
@@ -24,6 +23,7 @@
     <string name="pw_reset_instruction">Key in your e-mail address. An e-mail will be sent to your mailbox for confirmation.</string>
     <string name="pw_recovery">Password Recovery</string>
     <string name="login_registration">Already have an account? Login</string>
+    <string name="loading">Loading...</string>
 
     <string-array name="role_array">
         <item>Student</item>
