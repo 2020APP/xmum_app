@@ -36,8 +36,8 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
     private static final String KEY_ID = "id";
     private static final String KEY_FULL_NAME = "full_name";
     private static final String KEY_ROLE = "role";
-    private static final String KEY_PHONE_NUMBER = "phone_number";
-    private static final String KEY_EMAIL_ADDRESS = "email_address";
+    private static final String KEY_PHONE_NUMBER = "phone_num";
+    private static final String KEY_EMAIL_ADDRESS = "e_mail_addr";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_EMPTY = "";
     private EditText etId;
@@ -146,8 +146,18 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
             etPhoneNumber.requestFocus();
             return false;
         }
+        if (!android.util.Patterns.PHONE.matcher(phoneNumber).matches()) {
+            etPhoneNumber.setError("Phone number is in wrong format");
+            etPhoneNumber.requestFocus();
+            return false;
+        }
         if (KEY_EMPTY.equals(emailAddress)) {
             etEmailAddress.setError("E-mail cannot be empty");
+            etEmailAddress.requestFocus();
+            return false;
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()) {
+            etEmailAddress.setError("E-mail address is in wrong format");
             etEmailAddress.requestFocus();
             return false;
         }
