@@ -51,7 +51,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
     private String phoneNumber;
     private String emailAddress;
     private String password;
-    private String register_url = "http://127.0.0.1/xmum_app_server/register.php";
+    private String register_url = "http://10.0.2.2:80/xmum_app_server/register.php";
     private SessionHandler session;
 
     @Override
