@@ -5,6 +5,7 @@ import java.util.Date;
 public class User {
     String id;
     String fullName;
+    String role;
     Date sessionExpiryDate;
 
     public void setId(String id) {
@@ -13,6 +14,10 @@ public class User {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public void setSessionExpiryDate(Date sessionExpiryDate) {
@@ -25,6 +30,10 @@ public class User {
 
     public String getFullName() {
         return fullName;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public Date getSessionExpiryDate() {

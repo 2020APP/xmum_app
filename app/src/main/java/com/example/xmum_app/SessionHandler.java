@@ -79,6 +79,7 @@ public class SessionHandler {
         User user = new User();
         user.setId(mPreferences.getString(KEY_ID, KEY_EMPTY));
         user.setFullName(mPreferences.getString(KEY_FULL_NAME, KEY_EMPTY));
+        user.setRole(mPreferences.getString(KEY_ROLE, KEY_EMPTY));
         user.setSessionExpiryDate(new Date(mPreferences.getLong(KEY_EXPIRES, 0)));
 
         return user;

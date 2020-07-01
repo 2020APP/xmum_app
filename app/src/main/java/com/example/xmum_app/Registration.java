@@ -172,6 +172,11 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
             etPassword.requestFocus();
             return false;
         }
+        if (password.length() > 15) {
+            etPassword.setError("Password length cannot be more than 12");
+            etPassword.requestFocus();
+            return false;
+        }
 
         return true;
     }
@@ -201,7 +206,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
                             //Check if user got registered successfully
                             if (response.getInt(KEY_STATUS) == 0) {
                                 //Set the user session
-                                session.loginUser(id,fullName, role);
+                                session.loginUser(id, fullName, role);
                                 loadDashboard();
 
                             }else if(response.getInt(KEY_STATUS) == 1){
