@@ -87,7 +87,7 @@ public class LoginSecondary extends AppCompatActivity {
         callForget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginSecondary.this, recoverPassword.class);
+                Intent intent = new Intent(LoginSecondary.this,checkGrade.class);
                 startActivity(intent);
             }
         });
