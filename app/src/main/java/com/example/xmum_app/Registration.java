@@ -26,6 +26,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 public class Registration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    //Declare variables
     Button callBack, callRegister, callLogin;
     ImageView image;
     TextView text;
@@ -172,8 +173,8 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
             etPassword.requestFocus();
             return false;
         }
-        if (password.length() > 15) {
-            etPassword.setError("Password length cannot be more than 12");
+        if (password.length() <= 5 || password.length() >= 15) {
+            etPassword.setError("Password length must be between 6 ~ 14 character");
             etPassword.requestFocus();
             return false;
         }
@@ -210,7 +211,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
                                 loadDashboard();
 
                             }else if(response.getInt(KEY_STATUS) == 1){
-                                //Display error message if username is already existsing
+                                //Display error message if username is already existing
                                 etId.setError("This ID already had an account.");
                                 etId.requestFocus();
 
