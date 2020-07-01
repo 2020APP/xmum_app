@@ -6,7 +6,6 @@ public class User {
     String id;
     String fullName;
     String role;
-    String email;
     Date sessionExpiryDate;
 
     public void setId(String id) {
@@ -19,10 +18,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void setSessionExpiryDate(Date sessionExpiryDate) {
@@ -39,10 +34,6 @@ public class User {
 
     public String getRole() {
         return role;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public Date getSessionExpiryDate() {
