@@ -3,6 +3,7 @@ package com.example.xmum_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -129,13 +130,6 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    private void loadDashboard() {
-        Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
-        startActivity(i);
-        finish();
-
-    }
-
     private boolean validateInputs() {
         if (KEY_EMPTY.equals(id)) {
             etId.setError("ID cannot be empty");
@@ -202,7 +196,6 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
                             if (response.getInt(KEY_STATUS) == 0) {
                                 //Set the user session
                                 session.loginUser(id,fullName);
-                                loadDashboard();
 
                             }else if(response.getInt(KEY_STATUS) == 1){
                                 //Display error message if username is already existsing

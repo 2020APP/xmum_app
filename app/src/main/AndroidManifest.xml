@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".recoverPassword"/>
-        <activity android:name=".DashboardActivity" />
+        <activity android:name=".recoverPassword"></activity>
         <activity android:name=".Registration" />
         <activity android:name=".LoginSecondary" />
         <activity android:name=".LoginMain" />
