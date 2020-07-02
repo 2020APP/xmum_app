@@ -201,7 +201,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
                             //Check if user got registered successfully
                             if (response.getInt(KEY_STATUS) == 0) {
                                 //Set the user session
-                                session.loginUser(id,fullName, role);
+                                session.loginUser(id,fullName);
                                 loadDashboard();
 
                             }else if(response.getInt(KEY_STATUS) == 1){
