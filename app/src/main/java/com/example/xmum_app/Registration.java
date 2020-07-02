@@ -172,7 +172,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
             etPassword.requestFocus();
             return false;
         }
-        if (password.length() > 15) {
+        if (password.length() <= 5 || password.length() >= 15) {
             etPassword.setError("Password length cannot be more than 12");
             etPassword.requestFocus();
             return false;
