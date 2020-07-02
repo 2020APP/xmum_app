@@ -35,7 +35,7 @@ public class Homepage extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_launcher_foreground);
         }
 
-        NavigationView navigationView= findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_call);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -44,6 +44,11 @@ public class Homepage extends AppCompatActivity {
             }
         });
 
+        TextView rnn_displayer = navigationView.getHeaderView(0).findViewById(R.id.role_and_name_displayer);
+        TextView email_displayer = navigationView.getHeaderView(0).findViewById(R.id.email_displayer);
+
+        rnn_displayer.setText(user.getRole() + " " + user.getFullName());
+        email_displayer.setText(user.getEmail());
     }
 
     @Override
