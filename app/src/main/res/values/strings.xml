@@ -23,8 +23,10 @@
     <string name="pw_reset_instruction">Key in your e-mail address. An e-mail will be sent to your mailbox for confirmation.</string>
     <string name="pw_recovery">Password Recovery</string>
     <string name="login_registration">Already have an account? Login</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="logout">Logout</string>
+    <string name="academic_session">Academic session</string>
+
     <string name="academic_session">Academic session</string>
 
     <string-array name="role_array">

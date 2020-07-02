@@ -31,6 +31,7 @@ public class LoginSecondary extends AppCompatActivity {
     private static final String KEY_FULL_NAME = "full_name";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_ROLE = "role";
+    private static final String KEY_EMAIL = "e_mail_addr";
     private static final String KEY_EMPTY = "";
     private EditText etId;
     private EditText etPassword;
@@ -102,7 +103,7 @@ public class LoginSecondary extends AppCompatActivity {
     }
 
     private void loadDashboard() {
-        Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+        Intent i = new Intent(getApplicationContext(), Homepage.class);
         startActivity(i);
         finish();
 
@@ -130,7 +131,7 @@ public class LoginSecondary extends AppCompatActivity {
                             //Check if user got logged in successfully
 
                             if (response.getInt(KEY_STATUS) == 0) {
-                                session.loginUser(id,response.getString(KEY_FULL_NAME),response.getString(KEY_ROLE));
+                                session.loginUser(id,response.getString(KEY_FULL_NAME),response.getString(KEY_ROLE),response.getString(KEY_EMAIL));
                                 loadDashboard();
 
                             }else{
