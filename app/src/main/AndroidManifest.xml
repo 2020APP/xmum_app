@@ -16,8 +16,6 @@
         <activity android:name=".Registration" />
         <activity android:name=".LoginSecondary" />
         <activity android:name=".LoginMain" />
-        <activity android:name=".checkGrade"/>
-        <activity android:name=".InputGrade"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
