@@ -102,7 +102,7 @@ public class LoginSecondary extends AppCompatActivity {
     }
 
     private void loadDashboard() {
-        Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+        Intent i = new Intent(getApplicationContext(), Homepage.class);
         startActivity(i);
         finish();
 

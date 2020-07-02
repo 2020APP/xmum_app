@@ -131,7 +131,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void loadDashboard() {
-        Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+        Intent i = new Intent(getApplicationContext(), Homepage.class);
         startActivity(i);
         finish();
 

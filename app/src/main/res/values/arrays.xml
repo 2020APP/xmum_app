@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="acdemic_session">
+        <item>2020/02</item>
+        <item>2019/09</item>
+    </string-array>
+</resources>
