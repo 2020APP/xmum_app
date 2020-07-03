@@ -21,14 +21,14 @@
 
     <TextView
         android:id="@+id/slogan"
-        android:transitionName="xmum_slogan_transition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="75dp"
         android:fontFamily="@font/baloo"
         android:text="@string/ss_txt"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:transitionName="xmum_slogan_transition" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login"
