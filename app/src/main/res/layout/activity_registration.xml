@@ -77,15 +77,15 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/role_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:popupBackground="@drawable/popup_list_bg"
-                android:spinnerMode="dropdown" />
+            android:id="@+id/role_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:popupBackground="@drawable/popup_list_bg"
+            android:spinnerMode="dropdown" />
 
             <ImageView
                 android:id="@+id/arrow_down"
