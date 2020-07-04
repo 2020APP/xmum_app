@@ -27,9 +27,15 @@
     <string name="logout">Logout</string>
 
     <string name="academic_session">Academic session</string>
+    <string name="rolenname">roleNname</string>
+    <string name="e_xmum">E-XMUM</string>
 
     <string-array name="role_array">
         <item>Student</item>
         <item>Staff</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_staff">Hello Staff</string>
+    <string name="hello_student">Hello Student</string>
 </resources>

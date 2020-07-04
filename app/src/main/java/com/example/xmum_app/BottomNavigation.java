@@ -42,10 +42,6 @@ public class BottomNavigation extends AppCompatActivity implements BottomNavigat
                 replaceFragment(new Fragment3());
                 menuItem.setChecked(true);
                 break;
-            case R.id.tab_four:
-                replaceFragment(new Fragment4());
-                menuItem.setChecked(true);
-                break;
         }
         return false;
     } //替换Fragment的方法

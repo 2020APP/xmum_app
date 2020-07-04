@@ -2,27 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_call"
-            android:title="Call"
-            android:icon="@drawable/ic_launcher_foreground" />
-        <item
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="Friends"
-            android:id="@+id/nav_friends"
+            android:title="Timetable"
+            android:id="@+id/nav_timetable" />
             />
         <item
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="Task"
-            android:id="@+id/nav_task"
+            android:title="Course List"
+            android:id="@+id/nav_course_list" />
             />
         <item
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="Mail"
-            android:id="@+id/nav_mail"
+            android:title="Grade"
+            android:id="@+id/nav_grade" />
             />
         <item
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="Location"
-            android:id="@+id/nav_location" />
+            android:title="Evaluation"
+            android:id="@+id/nav_evaluation" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Logout" />
     </group>
 </menu>

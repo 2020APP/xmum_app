@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +28,7 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_main_home);
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
+        final String privilege = user.getRole();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -36,9 +42,20 @@ public class Homepage extends AppCompatActivity {
         }
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setCheckedItem(R.id.nav_call);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int itemId = menuItem.getItemId();
+                if(itemId == R.id.nav_grade && privilege.equals("Staff")) {
+                    replaceFragment(new StaffViewGrade());
+                }
+                if(itemId == R.id.nav_grade && privilege.equals("Student")) {
+                    replaceFragment(new StudentViewGrade());
+                }
+                if(itemId == R.id.nav_logout) {
+                    session.logoutUser();
+                    Intent intent = new Intent(Homepage.this, LoginMain.class);
+                    startActivity(intent);
+                }
                 drawerLayout.closeDrawers();
                 return false;
             }
@@ -67,4 +84,10 @@ public class Homepage extends AppCompatActivity {
         return true;
     }
 
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragment_empty, fragment);
+        transaction.commit();
+    }
 }
