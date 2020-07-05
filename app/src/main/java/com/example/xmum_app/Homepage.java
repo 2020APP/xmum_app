@@ -45,13 +45,19 @@ public class Homepage extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int itemId = menuItem.getItemId();
-                if(itemId == R.id.nav_grade && privilege.equals("Staff")) {
+                if(itemId == R.id.nav_courses && privilege.equals("Staff")) {
+                    replaceFragment(new StaffViewCourses());
+                }
+                else if(itemId == R.id.nav_courses && privilege.equals("Student")) {
+                    replaceFragment(new StaffViewCourses());
+                }
+                else if(itemId == R.id.nav_grade && privilege.equals("Staff")) {
                     replaceFragment(new StaffViewGrade());
                 }
-                if(itemId == R.id.nav_grade && privilege.equals("Student")) {
+                else if(itemId == R.id.nav_grade && privilege.equals("Student")) {
                     replaceFragment(new StudentViewGrade());
                 }
-                if(itemId == R.id.nav_logout) {
+                else if(itemId == R.id.nav_logout) {
                     session.logoutUser();
                     Intent intent = new Intent(Homepage.this, LoginMain.class);
                     startActivity(intent);
@@ -66,12 +72,6 @@ public class Homepage extends AppCompatActivity {
 
         rnn_displayer.setText(user.getRole() + " " + user.getFullName());
         email_displayer.setText(user.getEmail());
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

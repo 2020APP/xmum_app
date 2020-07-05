@@ -33,6 +33,7 @@ public class LoginSecondary extends AppCompatActivity {
     private static final String KEY_ROLE = "role";
     private static final String KEY_EMAIL = "e_mail_addr";
     private static final String KEY_EMPTY = "";
+    final LoadingDialog loadingDialog = new LoadingDialog(LoginSecondary.this);
     private EditText etId;
     private EditText etPassword;
     private String id;
@@ -110,7 +111,6 @@ public class LoginSecondary extends AppCompatActivity {
     }
 
     private void login() {
-        final LoadingDialog loadingDialog = new LoadingDialog(LoginSecondary.this);
         loadingDialog.startLoadingDialog();
 
         JSONObject request = new JSONObject();

@@ -6,8 +6,8 @@
             android:id="@+id/nav_timetable" />
             />
         <item
-            android:title="Course List"
-            android:id="@+id/nav_course_list" />
+            android:title="Course"
+            android:id="@+id/nav_courses" />
             />
         <item
             android:title="Grade"

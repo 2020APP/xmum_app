@@ -39,6 +39,7 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
     private static final String KEY_EMAIL_ADDRESS = "e_mail_addr";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_EMPTY = "";
+    final LoadingDialog loadingDialog = new LoadingDialog(Registration.this);
     private EditText etId;
     private EditText etFullName;
     private EditText etPhoneNumber;
@@ -182,7 +183,6 @@ public class Registration extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void registerUser() {
-        final LoadingDialog loadingDialog = new LoadingDialog(Registration.this);
         loadingDialog.startLoadingDialog();
         JSONObject request = new JSONObject();
         try {
