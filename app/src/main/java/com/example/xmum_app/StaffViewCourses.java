@@ -49,7 +49,6 @@ public class StaffViewCourses extends Fragment {
 
         createCourseBtn = v.findViewById(R.id.create_course);
         refreshPageBtn = v.findViewById(R.id.refresh);
-
         etCourseId = v.findViewById(R.id.course_id_edit_text);
         etCourseName = v.findViewById(R.id.course_name_edit_text);
         etCredit = v.findViewById(R.id.credt_edit_text);
