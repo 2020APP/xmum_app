@@ -36,6 +36,7 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
     private static final String KEY_LECTURER_ID = "lecturer_id";
     private static final String KEY_STUDENT_NO = "student_no";
     private String create_courses_url = "http://10.0.2.2:80/xmum_app_server/create_courses.php";
+    private String retrieve_courses_url = "http://10.0.2.2:80/xmum_app_server/retrieve_courses.php";
     final LoadingDialog loadingDialog = new LoadingDialog(Homepage.this);
 
     @Override
@@ -95,16 +96,17 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
     }
 
     @Override
-    public void onSVCInputSent(String CourseID, String CourseName, int Credit, int StudentNo) {
+    public void onSVCInputSent(Courses course) {
         loadingDialog.startLoadingDialog();
         JSONObject request = new JSONObject();
+        course.setLecturerID(session.getUserDetails().getId());
         try {
             //Populate the request parameters
-            request.put(KEY_COURSE_ID, CourseID);
-            request.put(KEY_COURSE_NAME, CourseName);
-            request.put(KEY_CREDIT, Credit);
-            request.put(KEY_LECTURER_ID, session.getUserDetails().getId());
-            request.put(KEY_STUDENT_NO, StudentNo);
+            request.put(KEY_COURSE_ID, course.getCourseID());
+            request.put(KEY_COURSE_NAME, course.getCourseName());
+            request.put(KEY_CREDIT, course.getCredit());
+            request.put(KEY_LECTURER_ID, course.getLecturerID());
+            request.put(KEY_STUDENT_NO, course.getStudentNo());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -136,4 +138,7 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
     }
+
+    @Override
+    public void onSVCDataRetrieved() {}
 }

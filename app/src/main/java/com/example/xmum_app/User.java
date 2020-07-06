@@ -9,6 +9,17 @@ public class User {
     String email;
     Date sessionExpiryDate;
 
+    public User() {
+    }
+
+    public User(String id, String fullName, String role, String email, Date sessionExpiryDate) {
+        this.id = id;
+        this.fullName = fullName;
+        this.role = role;
+        this.email = email;
+        this.sessionExpiryDate = sessionExpiryDate;
+    }
+
     public void setId(String id) {
         this.id = id;
     }

@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-
 public class StaffViewCourses extends Fragment {
     private StaffViewCoursesListener listener;
     Button createCourseBtn, refreshPageBtn;
@@ -22,14 +21,11 @@ public class StaffViewCourses extends Fragment {
     private EditText etCourseId;
     private EditText etCourseName;
     private EditText etCredit;
-    private String CourseID;
-    private String CourseName;
-    private int Credit;
-    private int StudentNo;
-
+    private Courses course;
 
     public interface StaffViewCoursesListener {
-        void onSVCInputSent(String CourseID, String CourseName, int Credit, int StudentNo);
+        void onSVCInputSent(Courses course);
+        void onSVCDataRetrieved();
     }
 
     @Nullable
@@ -41,22 +37,22 @@ public class StaffViewCourses extends Fragment {
         refreshPageBtn = v.findViewById(R.id.refresh);
         etCourseId = v.findViewById(R.id.course_id_edit_text);
         etCourseName = v.findViewById(R.id.course_name_edit_text);
-        etCredit = v.findViewById(R.id.credt_edit_text);
+        etCredit = v.findViewById(R.id.credit_edit_text);
 
         createCourseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CourseID = etCourseId.getText().toString().toLowerCase().trim();
-                CourseName = etCourseName.getText().toString().trim();
-                Credit = Integer.parseInt(etCredit.getText().toString());
-                StudentNo = 0;
+                course = new Courses();
+                course.setCourseID(etCourseId.getText().toString().toLowerCase().trim());
+                course.setCourseName(etCourseName.getText().toString().trim());
+                course.setCredit(Integer.parseInt(etCredit.getText().toString()));
+                course.setStudentNo(0);
 
                 if (validateSVCInputs()) {
-                    listener.onSVCInputSent(CourseID, CourseName, Credit, StudentNo);
+                    listener.onSVCInputSent(course);
                 }
             }
         });
-
         return v;
     }
 
@@ -78,17 +74,17 @@ public class StaffViewCourses extends Fragment {
     }
 
     private boolean validateSVCInputs() {
-        if (KEY_EMPTY.equals(CourseID)) {
+        if (KEY_EMPTY.equals(course.getCourseID())) {
             etCourseId.setError("Course ID cannot be empty");
             etCourseId.requestFocus();
             return false;
         }
-        if (KEY_EMPTY.equals(CourseName)) {
+        if (KEY_EMPTY.equals(course.getCourseName())) {
             etCourseName.setError("Course name cannot be empty");
             etCourseName.requestFocus();
             return false;
         }
-        if (Credit <= 0 || Credit >= 5) {
+        if (course.getCredit() <= 0 || course.getCredit() >= 5) {
             etCredit.setError("Credit cannot smaller than 1 or bigger than 4");
             etCredit.requestFocus();
             return false;
