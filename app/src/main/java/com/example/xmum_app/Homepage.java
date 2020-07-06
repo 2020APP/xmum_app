@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
@@ -21,7 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 public class Homepage extends AppCompatActivity {
     private SessionHandler session;
     private DrawerLayout drawerLayout;
-    private TextView mTextMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +27,7 @@ public class Homepage extends AppCompatActivity {
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
         final String privilege = user.getRole();
+        final String userID = user.getId();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -46,21 +45,14 @@ public class Homepage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int itemId = menuItem.getItemId();
                 if(itemId == R.id.nav_courses && privilege.equals("Staff")) {
-                    replaceFragment(new StaffViewCourses());
-                }
-                else if(itemId == R.id.nav_courses && privilege.equals("Student")) {
-                    replaceFragment(new StaffViewCourses());
-                }
-                else if(itemId == R.id.nav_grade && privilege.equals("Staff")) {
-                    replaceFragment(new StaffViewGrade());
-                }
-                else if(itemId == R.id.nav_grade && privilege.equals("Student")) {
-                    replaceFragment(new StudentViewGrade());
+                    StaffViewCourses fragment = new StaffViewCourses();
+                    Bundle args = new Bundle();
+                    args.putString("UserID", userID);
+                    fragment.setArguments(args);
+                    replaceFragment(fragment);
                 }
                 else if(itemId == R.id.nav_logout) {
-                    session.logoutUser();
-                    Intent intent = new Intent(Homepage.this, LoginMain.class);
-                    startActivity(intent);
+                    replaceFragment(new StudentViewCourses());
                 }
                 drawerLayout.closeDrawers();
                 return false;
