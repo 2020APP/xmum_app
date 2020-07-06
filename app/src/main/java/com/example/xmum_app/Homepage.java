@@ -29,7 +29,6 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
     private StaffViewCourses staffViewCourses;
     private SessionHandler session;
     private DrawerLayout drawerLayout;
-    private static final String KEY_STATUS = "status";
     private static final String KEY_MESSAGE = "message";
     private static final String KEY_COURSE_ID = "course_id";
     private static final String KEY_COURSE_NAME = "course_name";
