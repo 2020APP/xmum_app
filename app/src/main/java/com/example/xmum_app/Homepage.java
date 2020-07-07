@@ -29,6 +29,7 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
     private StaffViewCourses staffViewCourses;
     private SessionHandler session;
     private DrawerLayout drawerLayout;
+    private Courses courses;
     private static final String KEY_MESSAGE = "message";
     private static final String KEY_COURSE_ID = "course_id";
     private static final String KEY_COURSE_NAME = "course_name";
@@ -112,7 +113,7 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
             e.printStackTrace();
         }
         JsonObjectRequest jsArrayRequest = new JsonObjectRequest
-                (Request.Method.POST, create_courses_url, request, new Response.Listener<JSONObject>() {
+                (Request.Method.POST, retrieve_courses_url, request, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         loadingDialog.dismissLoadingDialog();
@@ -140,5 +141,31 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
     }
 
     @Override
-    public void onSVCDataRetrieved() {}
+    public void onSVCDataRetrieved() {
+        /*JSONObject request = new JSONObject();
+        JsonObjectRequest jsArrayRequest = new JsonObjectRequest
+                (Request.Method.POST, create_courses_url, request, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        loadingDialog.dismissLoadingDialog();
+                        try {
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissLoadingDialog();
+
+                        //Display error message whenever an error occurs
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+        MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);*/
+    }
 }
