@@ -18,12 +18,13 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 public class Homepage extends AppCompatActivity implements StaffViewCourses.StaffViewCoursesListener{
     private StaffViewCourses staffViewCourses;
@@ -34,6 +35,7 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
     private static final String KEY_COURSE_NAME = "course_name";
     private static final String KEY_CREDIT = "credit";
     private static final String KEY_LECTURER_ID = "lecturer_id";
+    private static final String KEY_LECTURER_NAME = "full_name";
     private static final String KEY_STUDENT_NO = "student_no";
     private String create_courses_url = "http://10.0.2.2:80/xmum_app_server/create_courses.php";
     private String retrieve_courses_url = "http://10.0.2.2:80/xmum_app_server/retrieve_courses.php";
@@ -111,8 +113,8 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsArrayRequest = new JsonObjectRequest
-                (Request.Method.POST, create_courses_url, request, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, retrieve_courses_url, request, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         loadingDialog.dismissLoadingDialog();
@@ -135,10 +137,83 @@ public class Homepage extends AppCompatActivity implements StaffViewCourses.Staf
                     }
                 });
 
+        JsonArrayRequest jsArrayRequest = new JsonArrayRequest
+                (Request.Method.POST, retrieve_courses_url, (String) null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        loadingDialog.dismissLoadingDialog();
+                        try {
+                            for (int n = 0; n < response.length(); n++) {
+                                JSONObject CoursesData = response.getJSONObject(n);
+
+                                staffViewCourses.setCourseViewText(
+                                        "Course no.: " + Integer.sum(n, 1) + "\n"
+                                                + "Course ID: " + CoursesData.getString(KEY_COURSE_ID) + "\n"
+                                                + "Course Name: " + CoursesData.getString(KEY_COURSE_NAME) + "\n"
+                                                + "Credit: " + CoursesData.getString(KEY_CREDIT) + "\n"
+                                                + "Lecturer: " + CoursesData.getString(KEY_LECTURER_NAME) + "\n"
+                                                + "Student no.: " + CoursesData.getString(KEY_STUDENT_NO) + "\n\n"
+                                );
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissLoadingDialog();
+
+                        //Display error message whenever an error occurs
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
         // Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(this).addToRequestQueue(jsObjectRequest);
         MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
     }
 
     @Override
-    public void onSVCDataRetrieved() {}
+    public void onSVCDataRetrieved() {
+        loadingDialog.startLoadingDialog();
+        JsonArrayRequest jsArrayRequest = new JsonArrayRequest
+                (Request.Method.POST, retrieve_courses_url, (String) null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        loadingDialog.dismissLoadingDialog();
+                        try {
+                            for (int n = 0; n < response.length(); n++) {
+                                JSONObject CoursesData = response.getJSONObject(n);
+
+                                staffViewCourses.setCourseViewText(
+                                        "Course no.: " + Integer.sum(n, 1) + "\n"
+                                        + "Course ID: " + CoursesData.getString(KEY_COURSE_ID) + "\n"
+                                        + "Course Name: " + CoursesData.getString(KEY_COURSE_NAME) + "\n"
+                                        + "Credit: " + CoursesData.getString(KEY_CREDIT) + "\n"
+                                        + "Lecturer: " + CoursesData.getString(KEY_LECTURER_NAME) + "\n"
+                                        + "Student no.: " + CoursesData.getString(KEY_STUDENT_NO) + "\n\n"
+                                );
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        loadingDialog.dismissLoadingDialog();
+
+                        //Display error message whenever an error occurs
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+        MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
+    }
 }

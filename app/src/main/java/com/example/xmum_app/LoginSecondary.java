@@ -131,7 +131,12 @@ public class LoginSecondary extends AppCompatActivity {
                             //Check if user got logged in successfully
 
                             if (response.getInt(KEY_STATUS) == 0) {
-                                session.loginUser(id,response.getString(KEY_FULL_NAME),response.getString(KEY_ROLE),response.getString(KEY_EMAIL));
+                                session.loginUser(
+                                        id,
+                                        response.getString(KEY_FULL_NAME),
+                                        response.getString(KEY_ROLE),
+                                        response.getString(KEY_EMAIL)
+                                );
                                 loadDashboard();
 
                             }else{
