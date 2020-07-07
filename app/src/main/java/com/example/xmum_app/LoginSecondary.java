@@ -1,7 +1,5 @@
 package com.example.xmum_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginSecondary extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Button callSign_in, callSign_up, callForget_password, callBack;
@@ -45,7 +45,8 @@ public class LoginSecondary extends AppCompatActivity implements AdapterView.OnI
         callSign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(LoginSecondary.this, WeatherMainActivity.class);
+                startActivity(intent);
             }
         });
 
