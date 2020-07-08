@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class StaffViewCourses extends Fragment {
-    private StaffViewCoursesListener listener;
+public class StaffViewCourses extends Fragment implements CoursesListener{
+    private CoursesListener listener;
     private Button createCourseBtn, refreshPageBtn;
     private static final String KEY_EMPTY = "";
     private EditText etCourseId;
@@ -25,9 +25,24 @@ public class StaffViewCourses extends Fragment {
     private Courses courseSender;
     private TextView CourseView;
 
-    public interface StaffViewCoursesListener {
-        void onSVCInputSent(Courses courseSender);
-        void onSVCDataRetrieved();
+    @Override
+    public void CoursesInputSent(Courses courseSender) {
+
+    }
+
+    @Override
+    public void CoursesDataRetrieved() {
+
+    }
+
+    @Override
+    public void CoursesEnrollStudent(String CourseID) {
+
+    }
+
+    @Override
+    public void CoursesDisenrollStudent(String CourseID) {
+
     }
 
     @Nullable
@@ -42,6 +57,9 @@ public class StaffViewCourses extends Fragment {
         etCredit = v.findViewById(R.id.credit_edit_text);
         CourseView = v.getRootView().findViewById(R.id.course_tv);
 
+        CourseView.setText("");
+        listener.CoursesDataRetrieved();
+
         createCourseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,9 +69,10 @@ public class StaffViewCourses extends Fragment {
                 courseSender.setCredit(Integer.parseInt(etCredit.getText().toString()));
                 courseSender.setStudentNo(0);
 
-                if (validateSVCInputs()) {
+                if (validateInputs()) {
                     CourseView.setText("");
-                    listener.onSVCInputSent(courseSender);
+                    listener.CoursesInputSent(courseSender);
+                    listener.CoursesDataRetrieved();
                 }
             }
         });
@@ -62,7 +81,7 @@ public class StaffViewCourses extends Fragment {
             @Override
             public void onClick(View v) {
                 CourseView.setText("");
-                listener.onSVCDataRetrieved();
+                listener.CoursesDataRetrieved();
             }
         });
 
@@ -76,11 +95,11 @@ public class StaffViewCourses extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof StaffViewCoursesListener) {
-            listener = (StaffViewCoursesListener) context;
+        if (context instanceof CoursesListener) {
+            listener = (CoursesListener) context;
         }else {
             throw new RuntimeException(context.toString()
-            + " must implement StaffViewCourses Listener");
+            + " must implement CoursesListener");
         }
     }
 
@@ -90,7 +109,7 @@ public class StaffViewCourses extends Fragment {
         listener = null;
     }
 
-    private boolean validateSVCInputs() {
+    private boolean validateInputs() {
         if (KEY_EMPTY.equals(courseSender.getCourseID())) {
             etCourseId.setError("Course ID cannot be empty");
             etCourseId.requestFocus();

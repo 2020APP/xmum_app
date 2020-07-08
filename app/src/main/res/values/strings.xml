@@ -50,4 +50,6 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="refresh_page">Reload</string>
     <string name="courses">Courses</string>
+    <string name="enroll">Enroll</string>
+    <string name="disenroll">Disenroll</string>
 </resources>
