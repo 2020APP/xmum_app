@@ -19,9 +19,7 @@ public class StaffViewCourses extends Fragment implements CoursesListener{
     private CoursesListener listener;
     private Button createCourseBtn, refreshPageBtn;
     private static final String KEY_EMPTY = "";
-    private EditText etCourseId;
-    private EditText etCourseName;
-    private EditText etCredit;
+    private EditText etCourseId, etCourseName, etCredit;
     private Courses courseSender;
     private TextView CourseView;
 
@@ -42,6 +40,16 @@ public class StaffViewCourses extends Fragment implements CoursesListener{
 
     @Override
     public void CoursesDisenrollStudent(String CourseID) {
+
+    }
+
+    @Override
+    public void GradeInputSent(String CourseID, String StudentID, double GPA) {
+
+    }
+
+    @Override
+    public void GradeDataRetrieved() {
 
     }
 

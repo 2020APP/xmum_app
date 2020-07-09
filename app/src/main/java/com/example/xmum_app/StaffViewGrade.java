@@ -1,64 +1,139 @@
 package com.example.xmum_app;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StaffViewGrade#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class StaffViewGrade extends Fragment {
+public class StaffViewGrade extends Fragment implements CoursesListener{
+    private CoursesListener listener;
+    private Button insertGradeBtn, refreshPageBtn;
+    private static final String KEY_EMPTY = "";
+    private EditText etCourseId, etStudentId, etGPA;
+    private String CourseID, StudentID;
+    private double GPA;
+    private TextView ehView;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    @Override
+    public void CoursesInputSent(Courses courseSender) {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public StaffViewGrade() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StaffViewGrade.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StaffViewGrade newInstance(String param1, String param2) {
-        StaffViewGrade fragment = new StaffViewGrade();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void CoursesDataRetrieved() {
+
+    }
+
+    @Override
+    public void CoursesEnrollStudent(String CourseID) {
+
+    }
+
+    @Override
+    public void CoursesDisenrollStudent(String CourseID) {
+
+    }
+
+    @Override
+    public void GradeInputSent(String CourseID, String StudentID, double GPA) {
+
+    }
+
+    @Override
+    public void GradeDataRetrieved() {
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_staff_view_grade, container, false);
+
+        insertGradeBtn = v.findViewById(R.id.insert_grade);
+        refreshPageBtn = v.findViewById(R.id.refresh);
+        etCourseId = v.findViewById(R.id.course_id_edit_text);
+        etStudentId = v.findViewById(R.id.student_id_edit_text);
+        etGPA = v.findViewById(R.id.gpa_edit_text);
+        ehView = v.getRootView().findViewById(R.id.eh_tv);
+
+        ehView.setText("");
+        listener.GradeDataRetrieved();
+
+        insertGradeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CourseID = etCourseId.getText().toString().toLowerCase().trim();
+                StudentID = etStudentId.getText().toString().trim();
+                GPA = Integer.parseInt(etGPA.getText().toString());
+
+                if (validateInputs()) {
+                    ehView.setText("");
+                    listener.GradeInputSent(CourseID, StudentID, GPA);
+                    listener.GradeDataRetrieved();
+                }
+            }
+        });
+
+        refreshPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ehView.setText("");
+                listener.GradeDataRetrieved();
+            }
+        });
+
+        return v;
+    }
+
+    public void setEHViewText(String text){
+        ehView.append(text);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof CoursesListener) {
+            listener = (CoursesListener) context;
+        }else {
+            throw new RuntimeException(context.toString()
+                    + " must implement CoursesListener");
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_staff_view_grade, container, false);
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+    private boolean validateInputs() {
+        if (KEY_EMPTY.equals(CourseID)) {
+            etCourseId.setError("Course ID cannot be empty");
+            etCourseId.requestFocus();
+            return false;
+        }
+        if (KEY_EMPTY.equals(StudentID)) {
+            etStudentId.setError("Student ID cannot be empty");
+            etStudentId.requestFocus();
+            return false;
+        }
+        if (GPA < 0 || GPA > 4) {
+            etGPA.setError("GPA cannot smaller than 0 or bigger than 4");
+            etGPA.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 }

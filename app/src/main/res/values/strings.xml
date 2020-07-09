@@ -52,4 +52,8 @@
     <string name="courses">Courses</string>
     <string name="enroll">Enroll</string>
     <string name="disenroll">Disenroll</string>
+    <string name="student_id">Student ID</string>
+    <string name="gpa">GPA</string>
+    <string name="insert_grade">Insert grade</string>
+    <string name="enrollment_history">Enrollment History</string>
 </resources>

@@ -29,12 +29,15 @@ import org.json.JSONObject;
 public class Homepage extends AppCompatActivity implements CoursesListener{
     private StaffViewCourses staffViewCourses;
     private StudentViewCourses studentViewCourses;
+    private StaffViewGrade staffViewGrade;
+    private StudentViewGrade studentViewGrade;
     private SessionHandler session;
     private DrawerLayout drawerLayout;
     private static final String KEY_MESSAGE = "message";
     private static final String KEY_COURSE_ID = "course_id";
     private static final String KEY_COURSE_NAME = "course_name";
     private static final String KEY_CREDIT = "credit";
+    private static final String KEY_GPA = "gpa";
     private static final String KEY_LECTURER_ID = "lecturer_id";
     private static final String KEY_LECTURER_NAME = "full_name";
     private static final String KEY_STUDENT_ID = "student_id";
@@ -43,6 +46,8 @@ public class Homepage extends AppCompatActivity implements CoursesListener{
     private String retrieve_courses_url = "http://10.0.2.2:80/xmum_app_server/retrieve_courses.php";
     private String enroll_student_url = "http://10.0.2.2:80/xmum_app_server/enroll_student.php";
     private String disenroll_student_url = "http://10.0.2.2:80/xmum_app_server/disenroll_student.php";
+    private String update_grade_url = "http://10.0.2.2:80/xmum_app_server/update_grade.php";
+    private String retrieve_grade_url = "http://10.0.2.2:80/xmum_app_server/retrieve_grade.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +75,19 @@ public class Homepage extends AppCompatActivity implements CoursesListener{
                     staffViewCourses = new StaffViewCourses();
                     replaceFragment(staffViewCourses, "staffViewCourses");
                 }
-                else if(itemId == R.id.nav_courses && session.getUserDetails().getRole().equals("Student")) {
+                if(itemId == R.id.nav_courses && session.getUserDetails().getRole().equals("Student")) {
                     studentViewCourses = new StudentViewCourses();
                     replaceFragment(studentViewCourses, "studentViewCourses");
                 }
-                else if(itemId == R.id.nav_logout) {
+                if(itemId == R.id.nav_grade && session.getUserDetails().getRole().equals("Staff")) {
+                    staffViewGrade = new StaffViewGrade();
+                    replaceFragment(staffViewGrade, "staffViewGrade");
+                }
+                if(itemId == R.id.nav_grade && session.getUserDetails().getRole().equals("Student")) {
+                    studentViewGrade = new StudentViewGrade();
+                    replaceFragment(studentViewGrade, "studentViewGrade");
+                }
+                if(itemId == R.id.nav_logout) {
                     session.logoutUser();
                     finish();
                 }
@@ -264,5 +277,102 @@ public class Homepage extends AppCompatActivity implements CoursesListener{
                 });
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsObjectRequest);
+    }
+
+    @Override
+    public void GradeInputSent(String CourseID, String StudentID, double GPA) {
+        JSONObject request = new JSONObject();
+        try {
+            //Populate the request parameters
+            request.put(KEY_COURSE_ID, CourseID);
+            request.put(KEY_STUDENT_ID, StudentID);
+            request.put(KEY_GPA, GPA);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsObjectRequest = new JsonObjectRequest
+                (Request.Method.POST, update_grade_url, request, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Toast.makeText(getApplicationContext(), response.getString(KEY_MESSAGE), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Display error message whenever an error occurs
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+        // Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(this).addToRequestQueue(jsObjectRequest);
+    }
+
+    @Override
+    public void GradeDataRetrieved() {
+        JSONObject request = new JSONObject();
+        if (session.getUserDetails().getRole().equals("Student")) {
+            try {
+                //Populate the request parameters
+                request.put(KEY_STUDENT_ID, session.getUserDetails().getId());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            request = (JSONObject) null;
+        }
+        JsonArrayRequest jsArrayRequest = new JsonArrayRequest
+                (Request.Method.POST, retrieve_grade_url, request, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            for (int n = 0; n < response.length(); n++) {
+                                JSONObject GradeData = response.getJSONObject(n);
+
+                                staffViewGrade = (StaffViewGrade) getSupportFragmentManager().findFragmentByTag("staffViewGrade");
+                                studentViewGrade = (StudentViewGrade) getSupportFragmentManager().findFragmentByTag("studentViewGrade");
+
+                                if (staffViewGrade != null && staffViewGrade.isAdded()) {
+                                    staffViewGrade.setEHViewText(
+                                            "Enrollment no.: " + Integer.sum(n, 1) + "\n"
+                                                    + "Course ID: " + GradeData.getString(KEY_COURSE_ID) + "\n"
+                                                    + "Student ID: " + GradeData.getString(KEY_STUDENT_ID) + "\n"
+                                                    + "GPA: " + GradeData.getString(KEY_GPA) + "\n\n"
+                                    );
+                                }
+
+                                if (studentViewGrade != null && studentViewGrade.isAdded()) {
+                                    studentViewGrade.setEHViewText(
+                                            "Subject no.: " + Integer.sum(n, 1) + "\n"
+                                                    + "Course ID: " + GradeData.getString(KEY_COURSE_ID) + "\n"
+                                                    + "Course Name: " + GradeData.getString(KEY_COURSE_NAME) + "\n"
+                                                    + "GPA: " + GradeData.getString(KEY_GPA) + "\n\n"
+                                    );
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Display error message whenever an error occurs
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+        MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
     }
 }
