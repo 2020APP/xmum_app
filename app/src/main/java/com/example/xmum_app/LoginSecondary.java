@@ -33,7 +33,6 @@ public class LoginSecondary extends AppCompatActivity {
     private static final String KEY_ROLE = "role";
     private static final String KEY_EMAIL = "e_mail_addr";
     private static final String KEY_EMPTY = "";
-    final LoadingDialog loadingDialog = new LoadingDialog(LoginSecondary.this);
     private EditText etId;
     private EditText etPassword;
     private String id;
@@ -111,8 +110,6 @@ public class LoginSecondary extends AppCompatActivity {
     }
 
     private void login() {
-        loadingDialog.startLoadingDialog();
-
         JSONObject request = new JSONObject();
         try {
             //Populate the request parameters
@@ -126,7 +123,6 @@ public class LoginSecondary extends AppCompatActivity {
                 (Request.Method.POST, login_url, request, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        loadingDialog.dismissLoadingDialog();
                         try {
                             //Check if user got logged in successfully
 
@@ -152,8 +148,6 @@ public class LoginSecondary extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        loadingDialog.dismissLoadingDialog();
-
                         //Display error message whenever an error occurs
                         Toast.makeText(getApplicationContext(),
                                 error.getMessage(), Toast.LENGTH_SHORT).show();
