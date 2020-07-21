@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -86,6 +87,10 @@ public class Homepage extends AppCompatActivity implements CoursesListener{
                 if(itemId == R.id.nav_grade && session.getUserDetails().getRole().equals("Student")) {
                     studentViewGrade = new StudentViewGrade();
                     replaceFragment(studentViewGrade, "studentViewGrade");
+                }
+                if(itemId == R.id.nav_weather) {
+                    Intent intent = new Intent(Homepage.this, WeatherMainActivity.class);
+                    startActivity(intent);
                 }
                 if(itemId == R.id.nav_logout) {
                     session.logoutUser();

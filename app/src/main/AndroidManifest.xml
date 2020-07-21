@@ -24,7 +24,6 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".Homepage" />
-        <activity android:name=".recoverPassword" />
         <activity android:name=".Registration" />
         <activity android:name=".LoginSecondary" />
         <activity android:name=".LoginMain" />
