@@ -46,7 +46,14 @@ public class WeatherMainActivity extends AppCompatActivity implements View.OnCli
         mainVp = findViewById(R.id.main_vp);
 
         addCityIv.setOnClickListener(this);
-        moreIv.setOnClickListener(this);
+        moreIv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WeatherMainActivity.this,Homepage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         fragmentList = new ArrayList<>();
         cityList = DBManager.queryAllCityName();  //gain the list of weather info in database

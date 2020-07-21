@@ -91,6 +91,7 @@ public class Homepage extends AppCompatActivity implements CoursesListener{
                 if(itemId == R.id.nav_weather) {
                     Intent intent = new Intent(Homepage.this, WeatherMainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 if(itemId == R.id.nav_logout) {
                     session.logoutUser();
